@@ -47,7 +47,7 @@ public class PessoaService implements PessoaServiceInterface {
 		
 		if(findPessoa.isPresent()) {
 			Pessoa updPessoa = findPessoa.get();
-			updPessoa.setNome(pessoa.getNome());
+			updPessoa.setNome(pessoa.getNome());			
 			updPessoa.setEndereco(pessoa.getEndereco());
 			updPessoa.setCep(pessoa.getCep());
 			updPessoa.setCidade(pessoa.getCidade());

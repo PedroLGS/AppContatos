@@ -59,7 +59,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoas);
 	}
 	
-	@Operation(summary = "Atualiza o registro de pessoa pelo ID")
+	@Operation(summary = "Atualiza o registro de pessoa por ID")
 	@PutMapping("/{id}") // http://localhost:8080/api/pessoas/1
 	public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa, @PathVariable Long id) {
 		Pessoa updPessoa = pessoaService.update(pessoa, id);
