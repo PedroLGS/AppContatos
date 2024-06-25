@@ -8,7 +8,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -35,19 +34,19 @@ public class Pessoa {
 	@Column(nullable = true, length = 2)
 	private String uf;
 	
-	@OneToMany
-	@JoinColumn(name = "contatos_id", referencedColumnName = "id")
+	@OneToMany(mappedBy = "contato")
 	private List<Contato> contatos;
 	
 	public Pessoa() { }
 	
-	public Pessoa(Long id, String nome, String endereco, String cep, String cidade, String uf) {
+	public Pessoa(Long id, String nome, String endereco, String cep, String cidade, String uf, List<Contato> contatos) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.cep = cep;
 		this.cidade = cidade;
 		this.uf = uf;
+		this.contatos = contatos;
 	}
 
 	public Long getId() {

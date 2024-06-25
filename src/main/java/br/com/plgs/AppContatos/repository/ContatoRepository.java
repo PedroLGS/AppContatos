@@ -11,7 +11,11 @@ import br.com.plgs.AppContatos.model.Contato;
 @Repository
 public interface ContatoRepository extends JpaRepository<Contato, Long> {
 	
-	@Query(value = "select * from tb_contatos where pessoa_id = ?", nativeQuery = true)
-	List<Contato> findByPessoaId(Long pessoaId);
+	@Query(value = "select c.id, c.tipo_contato, c.contato, c.pessoa_id from tb_contatos c "
+			+ "inner join tb_pessoa p "
+			+ "on c.pessoa_id = p.id "
+			+ "where p.id = ?1",
+			nativeQuery = true)
+	List<Object[]> findByPessoaId(Long id);
 
 }

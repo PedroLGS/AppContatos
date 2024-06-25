@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.plgs.AppContatos.dto.ContatosDTO;
 import br.com.plgs.AppContatos.model.Contato;
 import br.com.plgs.AppContatos.service.ContatoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,7 +27,7 @@ public class ContatoResource {
 	@Autowired
 	private ContatoService contatoService;
 	
-	@Operation(summary = "Grava o registro de Contato")
+	@Operation(summary = "Grava o registro de Contato para Pessoa")
 	@PostMapping // http://localhost:8080/api/contatos
 	public ResponseEntity<Contato> save(@RequestBody Contato contato) {
 		Contato newContato = contatoService.save(contato);
@@ -46,12 +47,15 @@ public class ContatoResource {
 	
 	@Operation(summary = "Busca todos os registros de contatos de uma pessoa")
 	@GetMapping("/pessoa/{idPessoa}") // http://localhost:8080/api/contatos/pessoa/1
-	public ResponseEntity<List<Contato>> findAllByPessoa(Long pessoa_Id) {
-		List<Contato> contatos = contatoService.findAllByPessoa(pessoa_Id);
-		
-		if(contatos == null)
+	public ResponseEntity<List<ContatosDTO>> findAllByPessoa(@PathVariable Long idPessoa) {
+		List<ContatosDTO> contatosDTO = contatoService.findByPessoaId(idPessoa);
+		if(contatosDTO == null) {
 			return ResponseEntity.notFound().build();
-		return ResponseEntity.ok(contatos);
+		}
+		if(contatosDTO.size() == 0) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(contatosDTO);
 
 	}
 	
