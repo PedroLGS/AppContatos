@@ -11,7 +11,11 @@ import br.com.plgs.AppContatos.model.Pessoa;
 @Repository
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 
-	@Query(value = "select p.id, p.nome, p.cep, p.cidade, p.uf from tb_pessoa p", nativeQuery = true)
-	List<Object[]> findByIdMalaDireta();
+	@Query(value = "SELECT p.id, p.nome, "
+			+ "CONCAT(p.endereco, ', ', p.cep, ' – CEP: ', p.cidade, '/', p.uf) "
+			+ "AS mala_direta "
+			+ "FROM tb_pessoa p "
+			+ "WHERE p.id = ?1", nativeQuery = true)
+	List<Object[]> findByIdMalaDireta(Long id);
 
 }

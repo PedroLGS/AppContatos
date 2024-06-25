@@ -1,11 +1,13 @@
 package br.com.plgs.AppContatos.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.plgs.AppContatos.dto.PessoaDTO;
 import br.com.plgs.AppContatos.model.Pessoa;
 import br.com.plgs.AppContatos.repository.PessoaRepository;
 import br.com.plgs.AppContatos.service.interfaces.PessoaServiceInterface;
@@ -34,6 +36,31 @@ public class PessoaService implements PessoaServiceInterface {
 	@Override
 	public Optional<Pessoa> findById(Long id) {
 		return pessoaRepository.findById(id);
+	}
+	
+	@Override
+	public List<PessoaDTO> findByIdMalaDireta(Long id) {
+		List<Object[]> listResult = pessoaRepository.findByIdMalaDireta(id);
+		List<PessoaDTO> listPessoaDTO = new ArrayList<PessoaDTO>();
+		
+		for(Object[] obj : listResult) {
+			PessoaDTO pDTO = returnDBPessoaDTO(obj);
+			listPessoaDTO.add(pDTO);
+		}
+		return listPessoaDTO;
+	}
+	
+	private PessoaDTO returnDBPessoaDTO(Object[] resultado) {
+		if(resultado != null) {
+			PessoaDTO pessoaDTO = new PessoaDTO(
+					((Long)resultado[0]).longValue(),
+					(String)resultado[1],
+					(String)resultado[2]					
+					);
+			return pessoaDTO;
+		} else {
+			return null;
+		}
 	}
 	
 	@Override

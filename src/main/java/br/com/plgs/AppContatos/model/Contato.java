@@ -22,8 +22,8 @@ public class Contato {
 	private Long id;
 
 	@Column(nullable = false)
-	@Min(value = 0) // telefone
-	@Max(value = 1) // celular
+	@Min(0) // telefone
+	@Max(1) // celular
 	private Integer tipoContato;
 	
 	@Column(nullable = false)

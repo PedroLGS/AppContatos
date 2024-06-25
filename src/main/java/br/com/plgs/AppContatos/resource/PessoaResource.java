@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.plgs.AppContatos.dto.PessoaDTO;
 import br.com.plgs.AppContatos.model.Pessoa;
 import br.com.plgs.AppContatos.service.PessoaService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -44,6 +45,19 @@ public class PessoaResource {
 			return ResponseEntity.notFound().build();
 		}
 		return ResponseEntity.ok(pessoa);
+	}
+	
+	@Operation(summary = "Busca registro por ID de uma pessoa para mala direta")
+	@GetMapping("/maladireta/{id}") // http://localhost:8080/api/pessoas/maladireta/1
+	public ResponseEntity<List<PessoaDTO>> findByIdMalaDireta(@PathVariable Long id) {
+		List<PessoaDTO> pessoaDTO = pessoaService.findByIdMalaDireta(id);
+		if(pessoaDTO == null) {
+			return ResponseEntity.notFound().build();
+		}
+		if(pessoaDTO.size() == 0) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(pessoaDTO);
 	}
 	
 	@Operation(summary = "Busca todos os registros de Pessoa")

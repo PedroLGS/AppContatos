@@ -62,8 +62,7 @@ public class ContatoService implements ContatoServiceInterface {
 			ContatosDTO contatosDTO = new ContatosDTO(
 					((Long)resultado[0]).longValue(),
 					((Integer)resultado[1]).intValue(),
-					(String)resultado[2],
-					((Long)resultado[3]).longValue());
+					(String)resultado[2]);
 			return contatosDTO;
 		} else {
 			return null;
