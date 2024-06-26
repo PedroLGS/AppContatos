@@ -1,13 +1,11 @@
 package br.com.plgs.AppContatos.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.plgs.AppContatos.dto.ContatosDTO;
 import br.com.plgs.AppContatos.model.Contato;
 import br.com.plgs.AppContatos.model.Pessoa;
 import br.com.plgs.AppContatos.repository.ContatoRepository;
@@ -46,29 +44,10 @@ public class ContatoService implements ContatoServiceInterface {
 	}
 
 	@Override
-	public List<ContatosDTO> findByPessoaId(Long idPessoa) {
-		List<Object[]> listResult = contatoRepository.findByPessoaId(idPessoa);
-		List<ContatosDTO> listByPessoaId = new ArrayList<ContatosDTO>();
-		
-		for (Object[] obj : listResult) {
-			ContatosDTO cDTO = returnDBContatosDTO(obj);
-			listByPessoaId.add(cDTO);
-		}
-		return listByPessoaId;
+	public List<Contato> findByPessoaId(Long idPessoa) {
+		return contatoRepository.findByPessoaId(idPessoa);
 	}
 	
-	private ContatosDTO returnDBContatosDTO(Object[] resultado) {
-		if (resultado != null) {
-			ContatosDTO contatosDTO = new ContatosDTO(
-					((Long)resultado[0]).longValue(),
-					((Integer)resultado[1]).intValue(),
-					(String)resultado[2]);
-			return contatosDTO;
-		} else {
-			return null;
-		}
-	}
-
 	@Override
 	public Contato update(Contato contato, Long id) {
 		Optional<Contato> findContato = contatoRepository.findById(id);

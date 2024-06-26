@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.plgs.AppContatos.dto.ContatosDTO;
 import br.com.plgs.AppContatos.model.Contato;
 import br.com.plgs.AppContatos.service.ContatoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,15 +46,15 @@ public class ContatoResource {
 	
 	@Operation(summary = "Busca todos os registros de contatos de uma pessoa")
 	@GetMapping("/pessoa/{idPessoa}") // http://localhost:8080/api/contatos/pessoa/1
-	public ResponseEntity<List<ContatosDTO>> findAllByPessoa(@PathVariable Long idPessoa) {
-		List<ContatosDTO> contatosDTO = contatoService.findByPessoaId(idPessoa);
-		if(contatosDTO == null) {
+	public ResponseEntity<List<Contato>> findAllByPessoa(@PathVariable Long idPessoa) {
+		List<Contato> contatos = contatoService.findByPessoaId(idPessoa);
+		if(contatos == null) {
 			return ResponseEntity.notFound().build();
 		}
-		if(contatosDTO.size() == 0) {
+		if(contatos.size() == 0) {
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(contatosDTO);
+		return ResponseEntity.ok(contatos);
 
 	}
 	
