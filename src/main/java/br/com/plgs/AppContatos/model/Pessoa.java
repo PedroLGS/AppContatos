@@ -3,6 +3,7 @@ package br.com.plgs.AppContatos.model;
 import java.util.List;
 import java.util.Objects;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,19 +35,18 @@ public class Pessoa {
 	@Column(nullable = true, length = 2)
 	private String uf;
 	
-	@OneToMany(mappedBy = "contato")
+	@OneToMany(mappedBy = "contato", cascade = CascadeType.ALL, targetEntity = Contato.class)
 	private List<Contato> contatos;
 	
 	public Pessoa() { }
 	
-	public Pessoa(Long id, String nome, String endereco, String cep, String cidade, String uf, List<Contato> contatos) {
+	public Pessoa(Long id, String nome, String endereco, String cep, String cidade, String uf) {
 		this.id = id;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.cep = cep;
 		this.cidade = cidade;
 		this.uf = uf;
-		this.contatos = contatos;
 	}
 
 	public Long getId() {
@@ -96,14 +96,6 @@ public class Pessoa {
 	public void setUf(String uf) {
 		this.uf = uf;
 	}	
-
-	public List<Contato> getContatos() {
-		return contatos;
-	}
-
-	public void setContatos(List<Contato> contatos) {
-		this.contatos = contatos;
-	}
 
 	@Override
 	public int hashCode() {
