@@ -23,7 +23,6 @@ public class ContatoService implements ContatoServiceInterface {
 	
 	@Override
 	public Contato save(Contato contato) {
-	try {
 		
 		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
 			System.out.println("Tipo de contato vazio ou diferente de 0 e 1.");
@@ -38,8 +37,7 @@ public class ContatoService implements ContatoServiceInterface {
 		if(contato.getPessoa().getId() != null) {
 			Optional<Pessoa> findPessoa = pessoaRepository.findById(contato.getPessoa().getId());
 			if(!findPessoa.isEmpty()) {
-				contato.setPessoa(findPessoa.get());
-				return contatoRepository.save(contato);
+				contato.setPessoa(findPessoa.get());			
 			} else {
 				System.out.println("Pessoa não encontrada: " + contato.getPessoa().getId());
 				return null;
@@ -48,6 +46,9 @@ public class ContatoService implements ContatoServiceInterface {
 			System.out.println("Pessoa não encontrada!");
 			return null;
 		}
+		
+		try {
+			return contatoRepository.save(contato);
 	} catch(Exception e) {
 		System.out.println("ERR: Erro ao inserir contato " + contato.toString() + ": " + e.getMessage());
 		return null;
