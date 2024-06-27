@@ -20,7 +20,7 @@ public class PessoaService implements PessoaServiceInterface {
 
 	@Override
 	public Pessoa save(Pessoa pessoa) {		
-		if(pessoa.getNome() == null) {
+		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
 			System.out.println("Nome da pessoa vazio.");
 			return null;
 		}
