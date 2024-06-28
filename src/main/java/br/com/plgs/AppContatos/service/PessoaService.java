@@ -70,17 +70,28 @@ public class PessoaService implements PessoaServiceInterface {
 
 	@Override
 	public Pessoa update(Pessoa pessoa, Long id) {
+
+		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
+			System.out.println("Nome da pessoa vazio.");
+			return null;
+		}
+
 		Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
-		
+
 		if(findPessoa.isPresent()) {
 			Pessoa updPessoa = findPessoa.get();
-			updPessoa.setNome(pessoa.getNome());			
+			updPessoa.setNome(pessoa.getNome());
 			updPessoa.setEndereco(pessoa.getEndereco());
 			updPessoa.setCep(pessoa.getCep());
 			updPessoa.setCidade(pessoa.getCidade());
 			updPessoa.setUf(pessoa.getUf());
-			
-			return pessoaRepository.save(updPessoa);
+
+			try {
+				return pessoaRepository.save(updPessoa);
+			} catch (Exception e) {
+				System.out.println("ERR: Erro ao atualizar pessoa " + updPessoa.toString() + ": " + e.getMessage());
+				return null;
+			}
 		}
 		return pessoaRepository.save(pessoa);
 	}
