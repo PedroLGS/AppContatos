@@ -68,6 +68,17 @@ public class ContatoService implements ContatoServiceInterface {
 	
 	@Override
 	public Contato update(Contato contato, Long id) {
+		
+		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
+			System.out.println("Tipo de contato vazio ou diferente de 0 e 1.");
+			return null;
+		}
+		
+		if(contato.getContato() == null || contato.getContato().isEmpty()) {
+			System.out.println("Nome do contato vazio.");
+			return null;
+		}
+		
 		Optional<Contato> findContato = contatoRepository.findById(id);
 		
 		if(findContato.isPresent()) {
@@ -75,7 +86,12 @@ public class ContatoService implements ContatoServiceInterface {
 			updContato.setTipoContato(contato.getTipoContato());
 			updContato.setContato(contato.getContato());
 			
-			return contatoRepository.save(updContato);
+			try {
+				return contatoRepository.save(updContato);
+			} catch(Exception e) {
+				System.out.println("ERR: Erro ao atualizar contato " + updContato.toString() + ": " + e.getMessage());
+				return null;
+			}
 		} else {
 			return save(contato);
 		}
