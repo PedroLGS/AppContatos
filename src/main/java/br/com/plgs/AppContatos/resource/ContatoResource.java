@@ -39,7 +39,7 @@ public class ContatoResource {
 	@GetMapping("/{id}") // http://localhost:8080/api/contatos/1
 	public ResponseEntity<Optional<Contato>> findById(@PathVariable Long id) {
 		Optional<Contato> findContato = contatoService.findById(id);
-		if(findContato == null)
+		if(findContato.isEmpty())
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok(findContato);
 	}
