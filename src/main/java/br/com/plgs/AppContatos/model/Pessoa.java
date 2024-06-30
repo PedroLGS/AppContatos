@@ -35,7 +35,7 @@ public class Pessoa {
 	@Column(nullable = true, length = 2)
 	private String uf;
 	
-	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
 	private List<Contato> contatos;
 	
 	public Pessoa() { }
