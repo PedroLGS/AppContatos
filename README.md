@@ -68,6 +68,7 @@ Execute o banco de dados:
 No docker em Containers, aperte o botão de run, e seu banco de dados MariaDB vai estar rodando na porta 3309.
 
 2) Instale o DBeaver
+
 Depois de instalar o DBeaver, vai em nova conexão e selecione MariaDB.
 Altere a porta de 3306 para 3309, digite em Database: sys, escreva a senha 123456 e aperte em testar conexão.
 Com a conexão bem sucedida aperte em concluir, na parte esquerda do DBeaver, aperte com o botão direito do mouse em Banco de dados e criar novo banco de dados, digite o nome do banco de dados: avaliacaojp.
