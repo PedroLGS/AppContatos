@@ -80,3 +80,12 @@ Com a conexão bem sucedida aperte em concluir, na parte esquerda do DBeaver, ap
 Acesse o link: http://localhost:8080/swagger-ui/index.html#/
 
 A documentação e os endpoint estarão disponíveis para manipulação dos dados.
+
+## Autor
+
+- [@Pedro Luiz Gomes Sampaio](https://www.github.com/PedroLGS)
+
+## Agradecimentos
+
+- Gostaria de agradecer ao Mestre [@Eduardo Henrique Marques Ferreira](https://www.github.com/eduardohen1), que em pouco tempo de treinamento foi capaz de transmitir muito conhecimento sobre Java.
+
