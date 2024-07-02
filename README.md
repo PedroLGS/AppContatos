@@ -6,7 +6,7 @@ na estrutura de Pessoas e Contatos.
 
 
 
-💻 ## Tecnologias Utilizadas
+## 💻 Tecnologias Utilizadas
 
 **JAVA-JDK:** 21.0.3; 
 
@@ -23,7 +23,7 @@ na estrutura de Pessoas e Contatos.
 **DBeaver:** 24.1.1
 
 
-## Instruções para executar a aplicação
+## ▶️ Instruções para executar a aplicação
 
 **1 - Acesse o diretório do Workspace da sua IDE e clone o repositório**
 
@@ -81,11 +81,11 @@ Acesse o link: http://localhost:8080/swagger-ui/index.html#/
 
 A documentação e os endpoint estarão disponíveis para manipulação dos dados.
 
-## Autor
+## ✍️ Autor
 
 - [@Pedro Luiz Gomes Sampaio](https://www.github.com/PedroLGS)
 
-## Agradecimentos
+## 🤝 Agradecimentos
 
 - Gostaria de agradecer ao Mestre [@Eduardo Henrique Marques Ferreira](https://www.github.com/eduardohen1), que em pouco tempo de treinamento foi capaz de transmitir muito conhecimento sobre Java.
 
