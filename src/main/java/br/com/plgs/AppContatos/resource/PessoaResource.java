@@ -60,7 +60,7 @@ public class PessoaResource {
 		return ResponseEntity.ok(pessoaDTO);
 	}
 	
-	@Operation(summary = "Busca todos os registros de Pessoa")
+	@Operation(summary = "Busca todos os registros de Pessoas")
 	@GetMapping // http://localhost:8080/api/pessoas
 	public ResponseEntity<List<Pessoa>> findAllPessoas() {
 		List<Pessoa> pessoas = pessoaService.findAll();
