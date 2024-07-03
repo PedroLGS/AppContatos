@@ -26,7 +26,7 @@ public class ContatoResource {
 	@Autowired
 	private ContatoService contatoService;
 	
-	@Operation(summary = "Grava o registro de Contato para Pessoa")
+	@Operation(summary = "Grava o registro de Contato para uma Pessoa")
 	@PostMapping // http://localhost:8080/api/contatos
 	public ResponseEntity<Contato> save(@RequestBody Contato contato) {
 		Contato newContato = contatoService.save(contato);

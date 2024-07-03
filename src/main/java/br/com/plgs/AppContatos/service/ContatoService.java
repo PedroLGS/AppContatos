@@ -25,7 +25,7 @@ public class ContatoService implements ContatoServiceInterface {
 	public Contato save(Contato contato) {
 
 		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
-			System.out.println("Tipo de contato vazio ou diferente de 0 e 1.");
+			System.out.println("Tipo de contato vazio ou diferente de 0 e 1. | 0=telefone 1=celular");
 			return null;
 		}
 
@@ -70,7 +70,7 @@ public class ContatoService implements ContatoServiceInterface {
 	public Contato update(Contato contato, Long id) {
 
 		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
-			System.out.println("Tipo de contato vazio ou diferente de 0 e 1.");
+			System.out.println("Tipo de contato vazio ou diferente de 0 e 1. | 0=telefone 1=celular");
 			return null;
 		}
 

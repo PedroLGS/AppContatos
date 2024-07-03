@@ -25,6 +25,16 @@ public class PessoaService implements PessoaServiceInterface {
 			return null;
 		}
 		
+		if(pessoa.getCep().length() > 8) {
+			System.out.println("O cep deve ter no máximo 8 números");
+			return null;
+		}
+		
+		if(pessoa.getUf().length() > 2) {
+			System.out.println("UF deve ter no máximo 2 letras");
+			return null;
+		}
+		
 		try {
 			return pessoaRepository.save(pessoa);
 		} catch(Exception e) {
@@ -73,6 +83,16 @@ public class PessoaService implements PessoaServiceInterface {
 
 		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
 			System.out.println("Nome da pessoa vazio.");
+			return null;
+		}
+		
+		if(pessoa.getCep().length() > 8) {
+			System.out.println("O cep deve ter no máximo 8 números");
+			return null;
+		}
+		
+		if(pessoa.getUf().length() > 2) {
+			System.out.println("UF deve ter no máximo 2 letras");
 			return null;
 		}
 
