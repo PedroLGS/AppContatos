@@ -92,9 +92,10 @@ public class ContatoService implements ContatoServiceInterface {
 				System.out.println("ERR: Erro ao atualizar contato " + updContato.toString() + ": " + e.getMessage());
 				return null;
 			}
+		} else {
+			System.out.println("Contato com ID " + id + " não encontrado.");
+	        return null;
 		}
-		return save(contato);
-
 	}
 
 	@Override
