@@ -112,8 +112,10 @@ public class PessoaService implements PessoaServiceInterface {
 				System.out.println("ERR: Erro ao atualizar pessoa " + updPessoa.toString() + ": " + e.getMessage());
 				return null;
 			}
+		} else {
+			System.out.println("Pessoa com ID: " + id + " não encontrado.");
+			return null;
 		}
-		return pessoaRepository.save(pessoa);
 	}
 
 	@Override

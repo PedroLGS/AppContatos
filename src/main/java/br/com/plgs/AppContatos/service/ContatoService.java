@@ -93,7 +93,7 @@ public class ContatoService implements ContatoServiceInterface {
 				return null;
 			}
 		} else {
-			System.out.println("Contato com ID " + id + " não encontrado.");
+			System.out.println("Contato com ID: " + id + " não encontrado.");
 	        return null;
 		}
 	}
