@@ -25,8 +25,8 @@ public class PessoaService implements PessoaServiceInterface {
 			return null;
 		}
 		
-		if(pessoa.getCep().length() > 8) {
-			System.out.println("O cep deve ter no máximo 8 números");
+		if(pessoa.getCep().length() > 9) {
+			System.out.println("O cep deve ter no máximo 9 caracteres");
 			return null;
 		}
 		
