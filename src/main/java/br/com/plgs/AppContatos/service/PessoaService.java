@@ -19,7 +19,13 @@ public class PessoaService implements PessoaServiceInterface {
 	private PessoaRepository pessoaRepository;
 
 	@Override
-	public Pessoa save(Pessoa pessoa) {				
+	public Pessoa save(Pessoa pessoa) {		
+		
+		if (pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
+			System.out.println("Nome da pessoa nulo ou vazio.");
+			return null;
+		}
+
 		try {
 			return pessoaRepository.save(pessoa);
 		} catch (Exception e) {
@@ -66,6 +72,11 @@ public class PessoaService implements PessoaServiceInterface {
 	@Override
 	public Pessoa update(Pessoa pessoa, Long id) {
 
+		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
+			System.out.println("Nome da pessoa nulo ou vazio.");
+			return null;
+		}
+		
 		Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
 
 		if(findPessoa.isPresent()) {
