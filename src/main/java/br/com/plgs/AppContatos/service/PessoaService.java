@@ -19,22 +19,7 @@ public class PessoaService implements PessoaServiceInterface {
 	private PessoaRepository pessoaRepository;
 
 	@Override
-	public Pessoa save(Pessoa pessoa) {		
-		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
-			System.out.println("Nome da pessoa vazio.");
-			return null;
-		}
-		
-		if(pessoa.getCep().length() > 9) {
-			System.out.println("O cep deve ter no máximo 9 caracteres");
-			return null;
-		}
-		
-		if(pessoa.getUf().length() > 2) {
-			System.out.println("UF deve ter no máximo 2 letras");
-			return null;
-		}
-		
+	public Pessoa save(Pessoa pessoa) {				
 		try {
 			return pessoaRepository.save(pessoa);
 		} catch(Exception e) {
@@ -80,22 +65,6 @@ public class PessoaService implements PessoaServiceInterface {
 
 	@Override
 	public Pessoa update(Pessoa pessoa, Long id) {
-
-		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
-			System.out.println("Nome da pessoa vazio.");
-			return null;
-		}
-		
-		if(pessoa.getCep().length() > 8) {
-			System.out.println("O cep deve ter no máximo 8 números");
-			return null;
-		}
-		
-		if(pessoa.getUf().length() > 2) {
-			System.out.println("UF deve ter no máximo 2 letras");
-			return null;
-		}
-
 		Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
 
 		if(findPessoa.isPresent()) {

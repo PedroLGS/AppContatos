@@ -3,6 +3,8 @@ package br.com.plgs.AppContatos.model;
 import java.util.List;
 import java.util.Objects;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -21,18 +23,23 @@ public class Pessoa {
 	private Long id;
 	
 	@Column(nullable = false)
+	@Length(max = 100, message = "O nome deve ter no máximo 100 caracteres")
 	private String nome;
 	
 	@Column(nullable = true)
+	@Length(max = 100, message = "O endereço deve ter no máximo 100 caracteres")
 	private String endereco;
 	
 	@Column(nullable = true)
+	@Length(min = 9, max = 9, message = "O cep deve ter 9 caracteres")
 	private String cep;
 	
 	@Column(nullable = true)
+	@Length(max = 100, message = "O nome da cidade deve ter no máximo 100 caracteres")
 	private String cidade;
 	
 	@Column(nullable = true)
+	@Length(max = 2, message = "O UF deve ter no máximo 2 caracteres")
 	private String uf;
 	
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
