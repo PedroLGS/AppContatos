@@ -22,8 +22,8 @@ public class PessoaService implements PessoaServiceInterface {
 	public Pessoa save(Pessoa pessoa) {				
 		try {
 			return pessoaRepository.save(pessoa);
-		} catch(Exception e) {
-			System.out.println("ERRO: Erro ao inserir pessoa " + pessoa.toString() + ": " + e.getMessage());
+		} catch (Exception e) {
+			System.out.println("ERR: Erro ao inserir pessoa " + pessoa.toString() + ": " + e.getMessage());
 			return null;
 		}
 	}
@@ -65,6 +65,7 @@ public class PessoaService implements PessoaServiceInterface {
 
 	@Override
 	public Pessoa update(Pessoa pessoa, Long id) {
+
 		Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
 
 		if(findPessoa.isPresent()) {

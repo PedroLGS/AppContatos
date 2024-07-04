@@ -2,6 +2,8 @@ package br.com.plgs.AppContatos.model;
 
 import java.util.Objects;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "tb_contatos")
@@ -20,9 +25,13 @@ public class Contato {
 	private Long id;
 
 	@Column(nullable = false)
+	@Min(value = 0, message = "0 = telefone 1 = celular")
+	@Max(value = 1, message = "0 = telefone 1 = celular")
 	private Integer tipoContato;
 	
 	@Column(nullable = false)
+	@NotBlank(message = "Nome do contato vazio")
+	@Length(max = 100, message = "O nome do contato deve ter no máximo 100 caracteres")
 	private String contato;
 	
 	@ManyToOne

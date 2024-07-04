@@ -13,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="tb_pessoa")
@@ -23,6 +24,7 @@ public class Pessoa {
 	private Long id;
 	
 	@Column(nullable = false)
+	@NotEmpty(message = "Nome vazio")
 	@Length(max = 100, message = "O nome deve ter no máximo 100 caracteres")
 	private String nome;
 	
@@ -31,7 +33,7 @@ public class Pessoa {
 	private String endereco;
 	
 	@Column(nullable = true)
-	@Length(min = 9, max = 9, message = "O cep deve ter 9 caracteres")
+	@Length(max = 9, message = "O cep deve ter no máximo 9 caracteres")
 	private String cep;
 	
 	@Column(nullable = true)

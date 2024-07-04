@@ -24,16 +24,6 @@ public class ContatoService implements ContatoServiceInterface {
 	@Override
 	public Contato save(Contato contato) {
 
-		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
-			System.out.println("Tipo de contato vazio ou diferente de 0 e 1 | 0=telefone 1=celular.");
-			return null;
-		}
-
-		if(contato.getContato() == null || contato.getContato().isEmpty()) {
-			System.out.println("Nome do contato vazio.");
-			return null;
-		}
-
 		if(contato.getPessoa().getId() != null) {
 			Optional<Pessoa> findPessoa = pessoaRepository.findById(contato.getPessoa().getId());
 			if (!findPessoa.isEmpty()) {
@@ -69,19 +59,9 @@ public class ContatoService implements ContatoServiceInterface {
 	@Override
 	public Contato update(Contato contato, Long id) {
 
-		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
-			System.out.println("Tipo de contato vazio ou diferente de 0 e 1 | 0=telefone 1=celular.");
-			return null;
-		}
-
-		if(contato.getContato() == null || contato.getContato().isEmpty()) {
-			System.out.println("Nome do contato vazio.");
-			return null;
-		}
-
 		Optional<Contato> findContato = contatoRepository.findById(id);
 
-		if(findContato.isPresent()) {
+		if (findContato.isPresent()) {
 			Contato updContato = findContato.get();
 			updContato.setTipoContato(contato.getTipoContato());
 			updContato.setContato(contato.getContato());
@@ -94,7 +74,7 @@ public class ContatoService implements ContatoServiceInterface {
 			}
 		} else {
 			System.out.println("Contato com ID: " + id + " não encontrado.");
-	        return null;
+			return null;
 		}
 	}
 
