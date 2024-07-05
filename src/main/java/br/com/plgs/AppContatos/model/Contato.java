@@ -46,12 +46,10 @@ public class Contato {
 		this.id = id;
 	}
 
-	// 0 = telefone 1 = celular
 	public Integer getTipoContato() {
 		return tipoContato;
 	}
 
-	// 0 = telefone 1 = celular
 	public void setTipoContato(Integer tipoContato) {
 		this.tipoContato = tipoContato;
 	}

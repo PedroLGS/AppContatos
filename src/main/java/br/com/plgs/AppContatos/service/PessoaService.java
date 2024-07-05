@@ -113,7 +113,7 @@ public class PessoaService implements PessoaServiceInterface {
 				return null;
 			}
 		} else {
-			System.out.println("Pessoa com ID: " + id + " não encontrado.");
+			System.out.println("Pessoa com ID " + id + ": não encontrado.");
 			return null;
 		}
 	}

@@ -26,13 +26,13 @@ public class Pessoa {
 	@Column(nullable = true)
 	private String endereco;
 	
-	@Column(nullable = true, length = 9)
+	@Column(nullable = true)
 	private String cep;
 	
 	@Column(nullable = true)
 	private String cidade;
 	
-	@Column(nullable = true, length = 2)
+	@Column(nullable = true)
 	private String uf;
 	
 	@OneToMany(mappedBy = "pessoa", targetEntity = Contato.class, cascade = CascadeType.ALL)

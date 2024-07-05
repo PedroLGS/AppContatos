@@ -30,7 +30,7 @@ public class ContatoService implements ContatoServiceInterface {
 		}
 
 		if(contato.getContato() == null || contato.getContato().isEmpty()) {
-			System.out.println("Nome do contato nulo ou vazio.");
+			System.out.println("Contato nulo ou vazio.");
 			return null;
 		}
 
@@ -75,7 +75,7 @@ public class ContatoService implements ContatoServiceInterface {
 		}
 
 		if(contato.getContato() == null || contato.getContato().isEmpty()) {
-			System.out.println("Nome do contato nulo ou vazio.");
+			System.out.println("Contato nulo ou vazio.");
 			return null;
 		}
 
@@ -93,7 +93,7 @@ public class ContatoService implements ContatoServiceInterface {
 				return null;
 			}
 		} else {
-			System.out.println("Contato com ID: " + id + " não encontrado.");
+			System.out.println("Contato com ID " + id + ": não encontrado.");
 			return null;
 		}
 	}
