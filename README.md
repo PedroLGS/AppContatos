@@ -35,7 +35,7 @@ Em seguida clone o repositório:
 ```bash
   git clone https://github.com/PedroLGS/AppContatos.git
 ```
-Para iniciar a aplicação
+Para iniciar a aplicação:
 ```bash
   cd AppContatos
   mvn spring-boot:run
