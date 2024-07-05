@@ -21,14 +21,14 @@ import br.com.plgs.AppContatos.service.PessoaService;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/api/pessoas") // http://localhost:8080/api/pessoas
+@RequestMapping("/api/pessoas") 
 public class PessoaResource {
 	
 	@Autowired
 	private PessoaService pessoaService;
 	
 	@Operation(summary = "Grava o registro de Pessoa")
-	@PostMapping // http://localhost:8080/api/pessoas
+	@PostMapping 
 	public ResponseEntity<Pessoa> save(@RequestBody Pessoa pessoa) {
 		Pessoa newPessoa = pessoaService.save(pessoa);
 		if(newPessoa == null) {
@@ -38,7 +38,7 @@ public class PessoaResource {
 	}
 	
 	@Operation(summary = "Busca registro por ID de Pessoa")
-	@GetMapping("/{id}") // http://localhost:8080/api/pessoas/1
+	@GetMapping("/{id}") 
 	public ResponseEntity<Optional<Pessoa>> findById(@PathVariable Long id) {
 		Optional<Pessoa> pessoa = pessoaService.findById(id);
 		if(pessoa.isEmpty()) {
@@ -48,7 +48,7 @@ public class PessoaResource {
 	}
 	
 	@Operation(summary = "Busca registro por ID de uma pessoa para mala direta")
-	@GetMapping("/maladireta/{id}") // http://localhost:8080/api/pessoas/maladireta/1
+	@GetMapping("/maladireta/{id}") 
 	public ResponseEntity<List<PessoaDTO>> findByIdMalaDireta(@PathVariable Long id) {
 		List<PessoaDTO> pessoaDTO = pessoaService.findByIdMalaDireta(id);
 		if(pessoaDTO == null) {
@@ -61,7 +61,7 @@ public class PessoaResource {
 	}
 	
 	@Operation(summary = "Busca todos os registros de Pessoas")
-	@GetMapping // http://localhost:8080/api/pessoas
+	@GetMapping 
 	public ResponseEntity<List<Pessoa>> findAllPessoas() {
 		List<Pessoa> pessoas = pessoaService.findAll();
 		if(pessoas == null) {
@@ -74,7 +74,7 @@ public class PessoaResource {
 	}
 	
 	@Operation(summary = "Atualiza o registro de pessoa por ID")
-	@PutMapping("/{id}") // http://localhost:8080/api/pessoas/1
+	@PutMapping("/{id}") 
 	public ResponseEntity<Pessoa> update(@RequestBody Pessoa pessoa, @PathVariable Long id) {
 		Pessoa updPessoa = pessoaService.update(pessoa, id);
 		if(updPessoa == null) {
@@ -84,7 +84,7 @@ public class PessoaResource {
 	}
 	
 	@Operation(summary = "Exclui o registro de pessoa por ID")
-	@DeleteMapping("/{id}") // http://localhost:8080/api/pessoas/1
+	@DeleteMapping("/{id}") 
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		pessoaService.delete(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

@@ -22,7 +22,7 @@ public class Contato {
 	@Column(nullable = false)
 	private Integer tipoContato;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false)
 	private String contato;
 	
 	@ManyToOne

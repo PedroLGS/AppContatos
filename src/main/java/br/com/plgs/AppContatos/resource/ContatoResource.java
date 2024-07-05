@@ -20,14 +20,14 @@ import br.com.plgs.AppContatos.service.ContatoService;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/api/contatos") // http://localhost:8080/api/contatos
+@RequestMapping("/api/contatos") 
 public class ContatoResource {
 	
 	@Autowired
 	private ContatoService contatoService;
 	
 	@Operation(summary = "Grava o registro de Contato para uma Pessoa")
-	@PostMapping // http://localhost:8080/api/contatos
+	@PostMapping 
 	public ResponseEntity<Contato> save(@RequestBody Contato contato) {
 		Contato newContato = contatoService.save(contato);
 		if(newContato == null)
@@ -36,7 +36,7 @@ public class ContatoResource {
 	}
 	
 	@Operation(summary = "Busca registro por ID de Contato")
-	@GetMapping("/{id}") // http://localhost:8080/api/contatos/1
+	@GetMapping("/{id}") 
 	public ResponseEntity<Optional<Contato>> findById(@PathVariable Long id) {
 		Optional<Contato> findContato = contatoService.findById(id);
 		if(findContato.isEmpty())
@@ -45,7 +45,7 @@ public class ContatoResource {
 	}
 	
 	@Operation(summary = "Busca todos os registros de contatos de uma pessoa")
-	@GetMapping("/pessoa/{idPessoa}") // http://localhost:8080/api/contatos/pessoa/1
+	@GetMapping("/pessoa/{idPessoa}") 
 	public ResponseEntity<List<Contato>> findAllByPessoa(@PathVariable Long idPessoa) {
 		List<Contato> contatos = contatoService.findByPessoaId(idPessoa);
 		if(contatos == null) {
@@ -59,7 +59,7 @@ public class ContatoResource {
 	}
 	
 	@Operation(summary = "Atualiza o registro de contato por ID")
-	@PutMapping("/{id}") // http://localhost:8080/api/contatos/1
+	@PutMapping("/{id}") 
 	public ResponseEntity<Contato> update(@RequestBody Contato contato, @PathVariable Long id) {
 		Contato updContato = contatoService.update(contato, id);
 		if(updContato == null)
@@ -68,7 +68,7 @@ public class ContatoResource {
 	}
 	
 	@Operation(summary = "Exclui o registro de contato por ID")
-	@DeleteMapping("/{id}") // http://localhost:8080/api/contatos/1
+	@DeleteMapping("/{id}") 
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		contatoService.delete(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);

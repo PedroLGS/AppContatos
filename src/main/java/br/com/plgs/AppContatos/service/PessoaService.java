@@ -14,15 +14,25 @@ import br.com.plgs.AppContatos.service.interfaces.PessoaServiceInterface;
 
 @Service
 public class PessoaService implements PessoaServiceInterface {
-	
+
 	@Autowired
 	private PessoaRepository pessoaRepository;
 
 	@Override
-	public Pessoa save(Pessoa pessoa) {		
-		
-		if (pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
+	public Pessoa save(Pessoa pessoa) {
+
+		if(pessoa.getNome() == null || pessoa.getNome().isEmpty()) {
 			System.out.println("Nome da pessoa nulo ou vazio.");
+			return null;
+		}
+
+		if(pessoa.getCep().length() > 9) {
+			System.out.println("O cep deve ter no máximo 9 caracteres.");
+			return null;
+		}
+
+		if(pessoa.getUf().length() > 2) {
+			System.out.println("UF deve ter no máximo 2 letras.");
 			return null;
 		}
 
@@ -38,32 +48,31 @@ public class PessoaService implements PessoaServiceInterface {
 	public Optional<Pessoa> findById(Long id) {
 		return pessoaRepository.findById(id);
 	}
-	
+
 	@Override
 	public List<PessoaDTO> findByIdMalaDireta(Long id) {
 		List<Object[]> listResult = pessoaRepository.findByIdMalaDireta(id);
 		List<PessoaDTO> listPessoaDTO = new ArrayList<PessoaDTO>();
-		
+
 		for(Object[] obj : listResult) {
 			PessoaDTO pDTO = returnDBPessoaDTO(obj);
 			listPessoaDTO.add(pDTO);
 		}
 		return listPessoaDTO;
 	}
-	
+
 	private PessoaDTO returnDBPessoaDTO(Object[] resultado) {
 		if(resultado != null) {
 			PessoaDTO pessoaDTO = new PessoaDTO(
-					((Long)resultado[0]).longValue(),
-					(String)resultado[1],
-					(String)resultado[2]					
-					);
+					((Long) resultado[0]).longValue(),
+					(String) resultado[1],
+					(String) resultado[2]);
 			return pessoaDTO;
 		} else {
 			return null;
 		}
 	}
-	
+
 	@Override
 	public List<Pessoa> findAll() {
 		return pessoaRepository.findAll();
@@ -76,7 +85,17 @@ public class PessoaService implements PessoaServiceInterface {
 			System.out.println("Nome da pessoa nulo ou vazio.");
 			return null;
 		}
-		
+
+		if(pessoa.getCep().length() > 9) {
+			System.out.println("O cep deve ter no máximo 9 caracteres.");
+			return null;
+		}
+
+		if(pessoa.getUf().length() > 2) {
+			System.out.println("UF deve ter no máximo 2 letras.");
+			return null;
+		}
+
 		Optional<Pessoa> findPessoa = pessoaRepository.findById(id);
 
 		if(findPessoa.isPresent()) {
@@ -102,7 +121,7 @@ public class PessoaService implements PessoaServiceInterface {
 	@Override
 	public void delete(Long id) {
 		pessoaRepository.deleteById(id);
-		
+
 	}
-	
+
 }

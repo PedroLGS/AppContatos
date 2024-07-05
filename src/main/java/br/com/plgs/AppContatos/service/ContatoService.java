@@ -17,24 +17,24 @@ public class ContatoService implements ContatoServiceInterface {
 
 	@Autowired
 	private ContatoRepository contatoRepository;
-	
+
 	@Autowired
 	private PessoaRepository pessoaRepository;
-	
+
 	@Override
 	public Contato save(Contato contato) {
-		
+
 		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
 			System.out.println("Tipo de contato vazio ou diferente de 0 e 1 | 0=telefone 1=celular.");
 			return null;
 		}
 
 		if(contato.getContato() == null || contato.getContato().isEmpty()) {
-			System.out.println("Nome do contato vazio.");
+			System.out.println("Nome do contato nulo ou vazio.");
 			return null;
 		}
 
-		if (contato.getPessoa().getId() != null) {
+		if(contato.getPessoa().getId() != null) {
 			Optional<Pessoa> findPessoa = pessoaRepository.findById(contato.getPessoa().getId());
 			if (!findPessoa.isEmpty()) {
 				contato.setPessoa(findPessoa.get());
@@ -65,23 +65,23 @@ public class ContatoService implements ContatoServiceInterface {
 	public List<Contato> findByPessoaId(Long idPessoa) {
 		return contatoRepository.findByPessoaId(idPessoa);
 	}
-	
+
 	@Override
 	public Contato update(Contato contato, Long id) {
-		
+
 		if(contato.getTipoContato() == null || contato.getTipoContato() != 0 && contato.getTipoContato() != 1) {
 			System.out.println("Tipo de contato vazio ou diferente de 0 e 1 | 0=telefone 1=celular.");
 			return null;
 		}
 
 		if(contato.getContato() == null || contato.getContato().isEmpty()) {
-			System.out.println("Nome do contato vazio.");
+			System.out.println("Nome do contato nulo ou vazio.");
 			return null;
 		}
 
 		Optional<Contato> findContato = contatoRepository.findById(id);
 
-		if (findContato.isPresent()) {
+		if(findContato.isPresent()) {
 			Contato updContato = findContato.get();
 			updContato.setTipoContato(contato.getTipoContato());
 			updContato.setContato(contato.getContato());
@@ -101,7 +101,7 @@ public class ContatoService implements ContatoServiceInterface {
 	@Override
 	public void delete(Long id) {
 		contatoRepository.deleteById(id);
-		
+
 	}
 
 }

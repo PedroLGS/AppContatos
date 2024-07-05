@@ -20,22 +20,22 @@ public class Pessoa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false, length = 100)
+	@Column(nullable = false)
 	private String nome;
 	
-	@Column(nullable = true, length = 100)
+	@Column(nullable = true)
 	private String endereco;
 	
 	@Column(nullable = true, length = 9)
 	private String cep;
 	
-	@Column(nullable = true, length = 100)
+	@Column(nullable = true)
 	private String cidade;
 	
 	@Column(nullable = true, length = 2)
 	private String uf;
 	
-	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "pessoa", targetEntity = Contato.class, cascade = CascadeType.ALL)
 	private List<Contato> contatos;
 	
 	public Pessoa() { }
