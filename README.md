@@ -27,13 +27,18 @@ na estrutura de Pessoas e Contatos.
 
 **1 - Acesse o diretório do Workspace da sua IDE e clone o repositório**
 
-No seu prompt de comando, acesse o diretório:
+No seu prompt de comando, acesse o diretório, este diretório é demonstrativo.:
 ```bash
-  Ex: cd C:\Users\pedro\capacitacao-minsait
+  cd C:\Users\pedro\capacitacao-minsait
 ```
 Em seguida clone o repositório:
 ```bash
   git clone https://github.com/PedroLGS/AppContatos.git
+```
+Para iniciar a aplicação
+```bash
+  cd AppContatos
+  mvn spring-boot:run
 ```
 
 **2 - Abrir a IDE e seguir esta ordem:**
