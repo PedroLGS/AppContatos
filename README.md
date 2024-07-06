@@ -29,7 +29,7 @@ na estrutura de Pessoas e Contatos.
 
 No seu prompt de comando, acesse o diretório, este diretório é demonstrativo.:
 ```bash
-  cd C:\Users\pedro\capacitacao-minsait
+  cd C:\Users\pedro\capacitacao
 ```
 Em seguida clone o repositório:
 ```bash
